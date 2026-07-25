@@ -1,0 +1,127 @@
+generated: '2026-07-25'
+method: searched
+source: https://id.hcf.com.au/.well-known/openid-configuration
+docs: https://www.hcf.com.au/about-us/about-HCF/information-security
+scope_note: >-
+  HCF publishes no developer API and issues no third-party API credentials.
+  Everything captured here describes the Okta-hosted identity tenant at
+  id.hcf.com.au that authenticates MEMBERS into the My Membership app and online
+  member services, plus the separate login-gated ASP.NET provider portals. There
+  is no client registration for third parties, no API key issuance, and no
+  published product scope catalog. This is an identity profile, not an API
+  authentication profile.
+summary:
+  types:
+  - oauth2
+  - openIdConnect
+  api_key_in: []
+  oauth2_flows:
+  - authorizationCode
+  - implicit
+  - refreshToken
+  - password
+  - clientCredentials
+  - deviceCode
+  - ciba
+  third_party_credentials: false
+  self_serve_signup_for_developers: false
+schemes:
+- name: HCF member sign-in (Okta OIDC)
+  type: openIdConnect
+  openIdConnectUrl: https://id.hcf.com.au/.well-known/openid-configuration
+  issuer: https://id.hcf.com.au
+  source: well-known/hcf-openid-configuration.json
+  audience: HCF members only
+  endpoints:
+    authorization: https://id.hcf.com.au/oauth2/v1/authorize
+    token: https://id.hcf.com.au/oauth2/v1/token
+    userinfo: https://id.hcf.com.au/oauth2/v1/userinfo
+    jwks: https://id.hcf.com.au/oauth2/v1/keys
+    registration: https://id.hcf.com.au/oauth2/v1/clients
+    introspection: https://id.hcf.com.au/oauth2/v1/introspect
+    revocation: https://id.hcf.com.au/oauth2/v1/revoke
+    end_session: https://id.hcf.com.au/oauth2/v1/logout
+    device_authorization: https://id.hcf.com.au/oauth2/v1/device/authorize
+    pushed_authorization_request: https://id.hcf.com.au/oauth2/v1/par
+  response_types_supported:
+  - code
+  - id_token
+  - code id_token
+  - code token
+  - id_token token
+  - code id_token token
+  grant_types_supported:
+  - authorization_code
+  - implicit
+  - refresh_token
+  - password
+  - urn:ietf:params:oauth:grant-type:device_code
+  - urn:openid:params:grant-type:ciba
+  - urn:okta:params:oauth:grant-type:otp
+  - urn:okta:params:oauth:grant-type:oob
+  token_endpoint_auth_methods_supported:
+  - client_secret_basic
+  - client_secret_post
+  - client_secret_jwt
+  - private_key_jwt
+  - none
+  code_challenge_methods_supported:
+  - S256
+  id_token_signing_alg_values_supported:
+  - RS256
+  id_token_encryption_alg_values_supported:
+  - RSA-OAEP-256
+  - RSA-OAEP-384
+  - RSA-OAEP-512
+  dpop_signing_alg_values_supported:
+  - RS256
+  - RS384
+  - RS512
+  - ES256
+  - ES384
+  - ES512
+  request_parameter_supported: true
+  scopes_supported:
+  - openid
+  - email
+  - profile
+  - address
+  - phone
+  - offline_access
+  - groups
+- name: Okta org authorization server (tenant management)
+  type: oauth2
+  source: well-known/hcf-oauth-authorization-server.json
+  metadata: https://id.hcf.com.au/.well-known/oauth-authorization-server
+  audience: Okta tenant administration
+  note: >-
+    Adds client_credentials to the grant list and advertises 83 okta.* org
+    scopes. These are stock Okta org-management scopes describing the identity
+    tenant, NOT an HCF insurance API. See scopes/hcf-scopes.yml.
+mfa:
+  required: true
+  factors:
+  - one-time code by SMS
+  - one-time code by email
+  scope: My Membership app and online member services
+  source: https://www.hcf.com.au/about-us/about-HCF/information-security
+  note: >-
+    HCF states multi-factor authentication is mandatory on member account
+    sign-in; the one-time code is valid for 5 minutes and is re-prompted on
+    every login.
+other_gated_surfaces:
+- name: HCF provider portals
+  url: https://www.hcf.com.au/provider-portals/
+  auth: legacy ASP.NET forms login (frmProvHospLogin.aspx,
+    frmProvMedicalLogin.aspx)
+  audience: recognised hospital, medical, dental and ancillary providers
+  api: false
+  note: >-
+    Login-gated web portals, not APIs. No OAuth, no documented machine
+    interface, no credential self-service.
+absent:
+  api_keys: true
+  developer_client_registration: true
+  partner_oauth_program: true
+  mutual_tls: true
+  documented_scopes_for_business_apis: true

@@ -1,0 +1,456 @@
+generated: '2026-07-25'
+method: searched
+source: https://id.hcf.com.au/.well-known/openid-configuration + https://id.hcf.com.au/.well-known/oauth-authorization-server
+docs: null
+warning: 'HCF publishes NO scope catalog for any insurance or business API, because it publishes no API.
+  Every scope below is advertised by the Okta identity tenant at id.hcf.com.au: the first group is the
+  standard OpenID Connect scope set used for member sign-in, and the second group is Okta''s stock org-management
+  scope set that every Okta org authorization server advertises whether or not the tenant grants any of
+  them. These describe the identity platform, not HCF product capabilities, and must not be read as an
+  HCF API scope catalog.'
+schemes:
+- name: HCF member sign-in (OIDC)
+  issuer: https://id.hcf.com.au
+  source: well-known/hcf-openid-configuration.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://id.hcf.com.au/oauth2/v1/authorize
+    tokenUrl: https://id.hcf.com.au/oauth2/v1/token
+    pkce: S256
+  scope_count: 7
+- name: Okta org authorization server
+  issuer: https://id.hcf.com.au
+  source: well-known/hcf-oauth-authorization-server.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://id.hcf.com.au/oauth2/v1/token
+  scope_count: 76
+summary:
+  total: 83
+  oidc: 7
+  okta_org_management: 76
+  hcf_product_scopes: 0
+scopes:
+- scope: openid
+  description: Required OIDC scope; requests an ID token for the signed-in member.
+  family: oidc
+  audience: member sign-in
+  sources:
+  - well-known/hcf-openid-configuration.json
+- scope: email
+  description: Access to the member email address and email_verified claim.
+  family: oidc
+  audience: member sign-in
+  sources:
+  - well-known/hcf-openid-configuration.json
+- scope: profile
+  description: Access to standard OIDC profile claims (name, given_name, family_name, locale, updated_at
+    and similar).
+  family: oidc
+  audience: member sign-in
+  sources:
+  - well-known/hcf-openid-configuration.json
+- scope: address
+  description: Access to the address claim.
+  family: oidc
+  audience: member sign-in
+  sources:
+  - well-known/hcf-openid-configuration.json
+- scope: phone
+  description: Access to the phone_number and phone_number_verified claims.
+  family: oidc
+  audience: member sign-in
+  sources:
+  - well-known/hcf-openid-configuration.json
+- scope: offline_access
+  description: Issues a refresh token so the session can be renewed without re-authentication.
+  family: oidc
+  audience: member sign-in
+  sources:
+  - well-known/hcf-openid-configuration.json
+- scope: groups
+  description: Includes the member group memberships as a claim.
+  family: oidc
+  audience: member sign-in
+  sources:
+  - well-known/hcf-openid-configuration.json
+- scope: okta.users.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.users.manage.self
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.users.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.users.read.self
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.linkedObjects.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.linkedObjects.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.profileMappings.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.profileMappings.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.userTypes.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.userTypes.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.clients.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.clients.register
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.clients.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.appGrants.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.appGrants.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.policies.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.policies.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.groups.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.groups.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.inlineHooks.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.inlineHooks.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.eventHooks.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.eventHooks.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.events.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.logs.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.apps.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.apps.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.governance.assignmentCandidates.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.accessRequests.tasks.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.accessRequests.tasks.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.schemas.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.schemas.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.idps.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.idps.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.factors.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.factors.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.riskProviders.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.riskProviders.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.roles.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.roles.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.orgs.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.orgs.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.domains.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.domains.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.brands.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.brands.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.sessions.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.sessions.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.templates.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.templates.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.trustedOrigins.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.trustedOrigins.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.threatInsights.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.threatInsights.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.behaviors.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.behaviors.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.networkZones.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.networkZones.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.agentPools.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.agentPools.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.reports.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.reports.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.features.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.features.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.certificateAuthorities.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.certificateAuthorities.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.principalRateLimits.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.principalRateLimits.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.rateLimits.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.rateLimits.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.directories.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.directories.groups.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.apiTokens.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.apiTokens.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.personal.adminSettings.manage
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json
+- scope: okta.personal.adminSettings.read
+  family: okta-org-management
+  audience: Okta tenant administration
+  sources:
+  - well-known/hcf-oauth-authorization-server.json

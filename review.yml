@@ -176,6 +176,37 @@ findings:
     exists: false
     note: No event catalog, webhook documentation or AsyncAPI description was found.
       Absence is the finding.
+  providerPortals:
+    exists: true
+    url: https://www.hcf.com.au/provider-portals/
+    status: '200'
+    found: '2026-07-25 (enrichment round)'
+    api: false
+    portals:
+    - name: Hospital provider portal
+      login: https://www.hcf.com.au/Provider_Portal_Internet/frmProvHospLogin.aspx
+      status: '200'
+    - name: Medical provider portal
+      login: https://www.hcf.com.au/Provider_Portal_Internet/frmProvMedicalLogin.aspx
+      status: '200'
+    - name: Dental provider portal
+      url: https://www.hcf.com.au/provider-portals/dental/
+      status: '200'
+    - name: Ancillary provider portal
+      url: https://www.hcf.com.au/provider-portals/ancillary/
+      status: '200'
+    - name: More for you program providers
+      url: https://www.hcf.com.au/provider-portals/more-for-you/
+    note: |
+      A real, previously unrecorded partner-facing surface on a legacy section of
+      www.hcf.com.au — four login-gated ASP.NET web portals for recognised hospital,
+      medical, dental and ancillary providers, plus rt health / Transport Health
+      Medicover schedules published as XLSX and PDF. This does NOT change the
+      answer: they are web applications behind forms authentication with no
+      documented machine interface, no OAuth, no credential self-service and no
+      spec. It is recorded because it is where partner integration actually lands,
+      and because a future review should not re-discover it as if it were new.
+      Contact for the Medicover scheme is medicover@hcf.com.au.
   postman:
     exists: false
     note: No public Postman collection or workspace found for HCF.

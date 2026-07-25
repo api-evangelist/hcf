@@ -18,8 +18,13 @@ description: >-
   404. Member and provider integration runs through channels HCF does not itself
   expose as an API — point-of-service extras claiming over third-party HICAPS VX,
   HICAPS Trinity and CommBank Smart Health terminals, Medicare Benefit Statements
-  for medical gap claims, and the My Membership app and online member services
-  behind an Okta-backed sign-in at id.hcf.com.au. No ACORD reference of any kind
+  for medical gap claims, the My Membership app and online member services behind
+  an Okta-backed sign-in at id.hcf.com.au, and four login-gated ASP.NET provider
+  portals (hospital, medical, dental and ancillary) at
+  www.hcf.com.au/provider-portals which are web applications rather than machine
+  interfaces. The only machine-readable surface HCF answers on is that Okta
+  tenant's OIDC and RFC 8414 discovery metadata, captured in this record.
+  No ACORD reference of any kind
   appears on the site, which is consistent with private health insurance sitting
   outside the general-insurance ACORD/AL3 world, and Australia's Consumer Data
   Right — designated for general insurance and then deferred — never reached
@@ -44,12 +49,65 @@ modified: '2026-07-25'
 specificationVersion: '0.19'
 apis: []
 common:
+- type: WellKnown
+  name: /.well-known discovery probe matrix
+  url: well-known/hcf-well-known.yml
+- type: OpenIDConfiguration
+  name: Okta OIDC discovery document (member sign-in)
+  url: well-known/hcf-openid-configuration.json
+- type: OAuthAuthorizationServer
+  name: RFC 8414 authorization server metadata
+  url: well-known/hcf-oauth-authorization-server.json
+- type: Authentication
+  name: Identity and authentication profile
+  url: authentication/hcf-authentication.yml
+- type: OAuthScopes
+  name: OIDC and Okta org scopes (no HCF product scopes)
+  url: scopes/hcf-scopes.yml
+- type: Conformance
+  name: Standards conformance posture
+  url: conformance/hcf-conformance.yml
+- type: DomainSecurity
+  url: security/hcf-domain-security.yml
+- type: TrustCenter
+  name: Trust centre artifact
+  url: security/hcf-trust-center.yml
+- type: LLMsTxt
+  name: llms.txt for HCF
+  url: llms/hcf-llms.txt
 - type: Website
   url: https://www.hcf.com.au/
 - type: About
   url: https://www.hcf.com.au/about-us
 - type: ContactUs
   url: https://www.hcf.com.au/contact-us
+- type: Support
+  url: https://www.hcf.com.au/about-hcf/help-hub
+- type: HelpCenter
+  url: https://www.hcf.com.au/about-hcf/help-hub
+- type: CustomerService
+  url: https://www.hcf.com.au/about-us/about-HCF/customer-service
+- type: Feedback
+  url: https://www.hcf.com.au/complaints-feedback
+- type: ProviderPortal
+  name: HCF provider portals (login-gated, not APIs)
+  url: https://www.hcf.com.au/provider-portals/
+- type: InformationSecurity
+  url: https://www.hcf.com.au/about-us/about-HCF/information-security
+- type: CodeOfConduct
+  url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/code-of-conduct
+- type: Sustainability
+  url: https://www.hcf.com.au/about-hcf/group-sustainability-statement
+- type: Careers
+  url: https://www.hcf.com.au/about-us/careers
+- type: Forms
+  url: https://www.hcf.com.au/forms-and-brochures
+- type: LinkedIn
+  url: https://au.linkedin.com/company/hcf
+- type: YouTube
+  url: https://www.youtube.com/hcfau
+- type: Facebook
+  url: https://www.facebook.com/hcfaustralia/
 - type: PrivacyPolicy
   url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
 - type: TermsOfService

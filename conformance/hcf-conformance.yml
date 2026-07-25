@@ -1,0 +1,171 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  https://id.hcf.com.au/.well-known/openid-configuration,
+  https://id.hcf.com.au/.well-known/oauth-authorization-server,
+  https://www.hcf.com.au/about-us/about-HCF/information-security,
+  https://www.hcf.com.au/about-hcf/privacy-information-trust-centre
+note: >-
+  HCF publishes no API, so nearly every API-facing standard is legitimately
+  not-applicable rather than failed. The only standards HCF demonstrably
+  implements are the OAuth 2.0 / OpenID Connect family, and that is via its
+  Okta identity tenant for member sign-in. The regulatory rows record the
+  Australian private-health-insurance context: the standards that DO govern
+  HCF's data exchange are national health rails (HICAPS, Medicare, ECLIPSE,
+  PHDB/APRA reporting) that HCF consumes rather than publishes.
+standards:
+- id: oauth2
+  name: OAuth 2.0 (RFC 6749)
+  conforms: true
+  evidence: >-
+    id.hcf.com.au advertises authorization, token, introspection and revocation
+    endpoints with authorization_code, implicit, refresh_token, password,
+    client_credentials and device_code grants.
+  scope: identity only — no HCF business API is protected by a published OAuth surface
+- id: oidc-core
+  name: OpenID Connect Core 1.0
+  conforms: true
+  evidence: >-
+    id_token signing (RS256) and encryption algorithms, userinfo endpoint, and
+    the full standard claim set are advertised at
+    /.well-known/openid-configuration.
+- id: oidc-discovery
+  name: OpenID Connect Discovery 1.0
+  conforms: true
+  evidence: /.well-known/openid-configuration returns 200 with a complete metadata document.
+- id: rfc8414
+  name: OAuth 2.0 Authorization Server Metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200.
+- id: rfc7636
+  name: PKCE
+  conforms: true
+  evidence: code_challenge_methods_supported = [S256]
+- id: rfc9126
+  name: Pushed Authorization Requests (PAR)
+  conforms: true
+  evidence: pushed_authorization_request_endpoint = https://id.hcf.com.au/oauth2/v1/par
+- id: rfc8628
+  name: OAuth 2.0 Device Authorization Grant
+  conforms: true
+  evidence: device_authorization_endpoint advertised
+- id: ciba
+  name: OpenID Connect CIBA (backchannel authentication)
+  conforms: true
+  evidence: backchannel_token_delivery_modes_supported = [poll]
+- id: rfc7662
+  name: OAuth 2.0 Token Introspection
+  conforms: true
+  evidence: introspection_endpoint advertised
+- id: rfc7009
+  name: OAuth 2.0 Token Revocation
+  conforms: true
+  evidence: revocation_endpoint advertised
+- id: rfc9449
+  name: DPoP (demonstrating proof-of-possession)
+  conforms: true
+  evidence: dpop_signing_alg_values_supported advertised (RS/ES family)
+- id: rfc7523
+  name: JWT client authentication (private_key_jwt)
+  conforms: true
+  evidence: token_endpoint_auth_methods_supported includes private_key_jwt and client_secret_jwt
+- id: rfc7591
+  name: OAuth 2.0 Dynamic Client Registration
+  conforms: partial
+  evidence: >-
+    registration_endpoint = https://id.hcf.com.au/oauth2/v1/clients is
+    advertised, but it is the Okta tenant endpoint and is not open to third
+    parties — HCF issues no developer client credentials.
+- id: fapi
+  name: FAPI 1.0 / 2.0
+  conforms: false
+  evidence: >-
+    No FAPI profile is claimed and the tenant still advertises implicit and
+    password grants, which FAPI forbids.
+- id: rfc9116
+  name: security.txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www and corporate; 405 on id.
+- id: rfc9727
+  name: /.well-known/api-catalog
+  conforms: false
+  evidence: 404 on www and corporate hosts
+- id: openapi
+  name: OpenAPI
+  conforms: false
+  evidence: no OpenAPI, Swagger or RAML artifact found on any HCF-controlled host
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence: no event, streaming or webhook surface is documented
+  applicable: false
+- id: rfc9457
+  name: Problem Details for HTTP APIs
+  conforms: false
+  applicable: false
+  evidence: no public API, therefore no error contract to evaluate
+- id: fhir-r4
+  name: HL7 FHIR R4
+  conforms: false
+  evidence: >-
+    No FHIR endpoint, capability statement or reference anywhere on HCF hosts.
+    Australian private health INSURERS sit outside the FHIR-mandated provider
+    ecosystem; FHIR obligations in Australia land on healthcare providers and
+    My Health Record, not on PHI funds.
+- id: acord
+  name: ACORD standards (AL3 / ACORD XML / NGDS)
+  conforms: false
+  evidence: >-
+    Zero occurrences of ACORD, AL3, ACORD XML, NGDS or IVANS across
+    www.hcf.com.au. ACORD governs property & casualty and life/annuity data
+    exchange; Australian private health insurance is a separately regulated
+    market that never adopted it.
+- id: cdr-australia
+  name: Consumer Data Right (Australia)
+  conforms: false
+  applicable: false
+  evidence: >-
+    CDR was designated for banking and energy, extended in principle to general
+    insurance and then deferred; private health insurance was never in scope.
+    There is no open-data obligation on HCF and no CDR register entry.
+- id: privacy-act-1988
+  name: Privacy Act 1988 (Cth) and the Australian Privacy Principles
+  conforms: true
+  evidence: >-
+    HCF's privacy & security trust centre states it handles member information
+    "in accordance with our privacy policy, data principles, and obligations to
+    the Privacy Act 1988 (Cth)".
+  source: https://www.hcf.com.au/about-hcf/privacy-information-trust-centre
+- id: mfa-member-accounts
+  name: Mandatory multi-factor authentication on member accounts
+  conforms: true
+  evidence: >-
+    HCF states MFA is mandatory for the My Membership app and online member
+    services, with a 5-minute one-time code delivered by SMS or email.
+  source: https://www.hcf.com.au/about-us/about-HCF/information-security
+- id: soc2
+  name: SOC 2
+  conforms: unknown
+  evidence: no certification is published on any public HCF page
+- id: iso27001
+  name: ISO/IEC 27001
+  conforms: unknown
+  evidence: no certification is published on any public HCF page
+national_rails:
+  note: >-
+    Recorded for context. These are the real integration standards in HCF's
+    market; HCF is a consumer of them, not a publisher, and none of them is an
+    HCF API.
+  rails:
+  - name: HICAPS (VX and Trinity terminals)
+    role: point-of-service extras claiming at recognised providers
+    published_by: NAB / HICAPS
+  - name: CommBank Smart Health terminals
+    role: alternative point-of-service extras claiming rail
+    published_by: Commonwealth Bank of Australia
+  - name: Medicare Benefit Statement
+    role: prerequisite for medical gap claims — obtained from Medicare, then lodged with HCF
+    published_by: Services Australia
+  - name: APRA / PHDB statutory reporting
+    role: prudential and private-health-insurance statistical reporting
+    published_by: Australian Prudential Regulation Authority

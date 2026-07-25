@@ -1,0 +1,95 @@
+generated: '2026-07-25'
+method: searched
+source: live probes of every HCF-controlled host on 2026-07-25
+note: >-
+  HCF publishes no developer API, so the only /.well-known/ surface that answers
+  is the Okta-hosted identity tenant at id.hcf.com.au that backs member sign-in.
+  Both discovery documents returned there are Okta ORG authorization-server
+  metadata — they describe the identity tenant itself, not an HCF insurance
+  product API. The marketing host (www.hcf.com.au) and the AEM corporate host
+  (corporate.hcf.com.au) return 404 for every /.well-known/ path probed,
+  including RFC 9116 security.txt. id.hcf.com.au answers 405 (method not
+  allowed) rather than 404 for unimplemented paths — recorded verbatim.
+hosts:
+- host: https://id.hcf.com.au
+  role: identity provider (Okta) for member sign-in
+  documents:
+  - path: /.well-known/openid-configuration
+    spec: OpenID Connect Discovery 1.0
+    status: 200
+    file: hcf-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    spec: RFC 8414 OAuth 2.0 Authorization Server Metadata
+    status: 200
+    file: hcf-oauth-authorization-server.json
+  - path: /oauth2/v1/keys
+    spec: RFC 7517 JWK Set
+    status: 200
+    file: null
+    note: >-
+      Live and public, but deliberately not snapshotted here because signing
+      keys rotate; resolve at request time.
+  - path: /.well-known/oauth-protected-resource
+    spec: RFC 9728
+    status: 405
+  - path: /.well-known/security.txt
+    spec: RFC 9116
+    status: 405
+  - path: /.well-known/api-catalog
+    spec: RFC 9727
+    status: 405
+  - path: /.well-known/change-password
+    status: 405
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://www.hcf.com.au
+  role: canonical marketing and member site (Adobe Experience Manager)
+  documents:
+  - path: /.well-known/security.txt
+    spec: RFC 9116
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    spec: RFC 9727
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/change-password
+    status: 404
+  - path: /.well-known/dnt-policy.txt
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://corporate.hcf.com.au
+  role: AEM corporate/content host (api.hcf.com.au 301s here)
+  documents:
+  - path: /.well-known/security.txt
+    spec: RFC 9116
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    spec: RFC 9727
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+security_txt:
+  present: false
+  note: >-
+    No RFC 9116 security.txt on any HCF host. HCF does publish a fraud-reporting
+    contact (fraudresponseteam@hcf.com.au) on its privacy & security trust
+    centre, but that is a consumer fraud channel, not a coordinated
+    vulnerability-disclosure address, and no disclosure policy is published.

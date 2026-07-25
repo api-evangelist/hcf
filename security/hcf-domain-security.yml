@@ -1,0 +1,16 @@
+generated: '2026-07-25'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.hcf.com.au
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 18 07:27:27 2026 GMT
+  hsts: false
+domains:
+- domain: hcf.com.au
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

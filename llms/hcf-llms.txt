@@ -1,0 +1,78 @@
+# HCF (The Hospitals Contribution Fund of Australia Limited)
+
+> Australia's largest not-for-profit health fund, founded 1932 and headquartered in Sydney,
+> covering more than 2 million members (ABN 68 000 026 746, AFSL 241 414). HCF underwrites
+> private health insurance (hospital, extras, ambulance) and Overseas Visitors Health Cover,
+> and distributes HCF Life and Recover Cover, travel, pet, home, car and landlord insurance,
+> plus the Flip accidental-injury brand — alongside its own HCF dental and eyecare centres and
+> the HCF Research Foundation.
+
+## Important for agents: there is no HCF API
+
+HCF publishes **no public developer API, no developer portal, and no machine-readable API
+description of any kind**. Verified 2026-07-25: developer.hcf.com.au, developers.hcf.com.au,
+docs.hcf.com.au, provider.hcf.com.au, portal.hcf.com.au and my.hcf.com.au do not resolve;
+/developers, /developer, /apis, /docs, /partners and /integrations on www.hcf.com.au all
+return 404; every /openapi.json, /openapi.yaml, /swagger.json, /api-docs and /graphql
+candidate on www.hcf.com.au and corporate.hcf.com.au returns 404. api.hcf.com.au resolves but
+301s to an Adobe Experience Manager content-services endpoint (Siren hypermedia) that backs the
+marketing site — it is undocumented CMS plumbing with no insurance semantics and is not an API
+product. Do not attempt to integrate with it.
+
+There is no API key issuance, no third-party client registration, no partner OAuth program,
+no webhook catalog, no public Postman collection, no SDK on any package registry, and no CLI.
+
+## Where integration actually happens
+
+- Point-of-service extras claiming runs over third-party terminals HCF consumes rather than
+  publishes: HICAPS VX, HICAPS Trinity and CommBank Smart Health.
+- Medical gap claims require a Medicare Benefit Statement from Services Australia first, then
+  lodgement with HCF.
+- Members self-serve through the My Membership app and online member services behind an
+  Okta-backed sign-in at id.hcf.com.au.
+- Recognised hospital, medical, dental and ancillary providers use login-gated ASP.NET web
+  portals — web applications, not APIs.
+- Australia's Consumer Data Right was designated for banking and energy, extended in principle
+  to general insurance and then deferred; it never reached private health insurance, so there is
+  no open-data obligation on HCF.
+
+## Identity (the only machine-readable surface)
+
+- [OpenID Connect discovery](https://id.hcf.com.au/.well-known/openid-configuration): member
+  sign-in tenant metadata (authorization_code + PKCE S256, PAR, device code, CIBA, DPoP).
+- [OAuth 2.0 authorization server metadata](https://id.hcf.com.au/.well-known/oauth-authorization-server):
+  Okta org metadata; the 76 `okta.*` scopes it advertises are stock Okta tenant-management
+  scopes and are **not** an HCF product scope catalog.
+- [JWK Set](https://id.hcf.com.au/oauth2/v1/keys)
+
+## Artifacts in this record
+
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/hcf/refs/heads/main/apis.yml) — APIs.json index (apis[] is intentionally empty)
+- [review.yml](https://raw.githubusercontent.com/api-evangelist/hcf/refs/heads/main/review.yml) — full probe log and findings
+- [authentication/hcf-authentication.yml](https://raw.githubusercontent.com/api-evangelist/hcf/refs/heads/main/authentication/hcf-authentication.yml) — identity profile
+- [scopes/hcf-scopes.yml](https://raw.githubusercontent.com/api-evangelist/hcf/refs/heads/main/scopes/hcf-scopes.yml) — OIDC + Okta org scopes, with caveats
+- [well-known/hcf-well-known.yml](https://raw.githubusercontent.com/api-evangelist/hcf/refs/heads/main/well-known/hcf-well-known.yml) — /.well-known probe matrix
+- [conformance/hcf-conformance.yml](https://raw.githubusercontent.com/api-evangelist/hcf/refs/heads/main/conformance/hcf-conformance.yml) — standards posture incl. ACORD, FHIR, CDR
+- [security/hcf-domain-security.yml](https://raw.githubusercontent.com/api-evangelist/hcf/refs/heads/main/security/hcf-domain-security.yml) — TLS/HSTS/DNSSEC/CAA/SPF/DMARC probe
+- [security/hcf-trust-center.yml](https://raw.githubusercontent.com/api-evangelist/hcf/refs/heads/main/security/hcf-trust-center.yml) — trust centre, no published certifications
+
+## Human entry points
+
+- [Website](https://www.hcf.com.au/)
+- [About HCF](https://www.hcf.com.au/about-us)
+- [Help hub](https://www.hcf.com.au/about-hcf/help-hub)
+- [Contact us](https://www.hcf.com.au/contact-us)
+- [Member login](https://www.hcf.com.au/member-login)
+- [Provider portals](https://www.hcf.com.au/provider-portals/)
+- [Privacy information & trust centre](https://www.hcf.com.au/about-hcf/privacy-information-trust-centre)
+- [Information security](https://www.hcf.com.au/about-us/about-HCF/information-security)
+- [Health Agenda (blog)](https://www.hcf.com.au/health-agenda)
+- [Media centre](https://www.hcf.com.au/about-us/media-centre)
+- [Annual report](https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/annual-report)
+- [Privacy policy](https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy)
+- [Terms & conditions](https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/terms-and-conditions)
+
+---
+generated: 2026-07-25
+method: generated
+source: apis.yml + review.yml + live probes (no /llms.txt is published by HCF; www and corporate hosts return 404)

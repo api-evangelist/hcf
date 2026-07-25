@@ -1,0 +1,58 @@
+generated: '2026-07-25'
+method: searched
+probe: true
+url: https://www.hcf.com.au/about-hcf/privacy-information-trust-centre
+title: Privacy information & trust centre
+audience: members and consumers
+certifications: []
+certifications_note: >-
+  HCF names no third-party certification (no SOC 2, ISO 27001, PCI DSS, HIPAA,
+  FedRAMP or CSA STAR) anywhere on its public site. The automated
+  trust-centre probe scored this page below threshold for exactly that reason;
+  it is recorded here as a searched result because the page genuinely exists and
+  is HCF's own "trust centre", it simply carries consumer security guidance
+  rather than an enterprise compliance posture. Do NOT read this as a published
+  compliance program, and no `Compliance` pointer is emitted for it.
+sections:
+- name: Our privacy policy
+  url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+  note: Handling of member information under the Privacy Act 1988 (Cth)
+- name: Protection from fraud
+  url: https://www.hcf.com.au/about-us/about-HCF/information-security/protecting-you-against-fraud
+- name: Information security
+  url: https://www.hcf.com.au/about-us/about-HCF/information-security
+- name: Code of conduct
+  url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/code-of-conduct
+claims:
+- 24/7 monitoring, threat detection and threat intelligence
+- continuous monitoring of member accounts against fraud and scams
+- mandatory multi-factor authentication on member account sign-in
+- regular security testing
+- governance processes and controls to manage cyber risk
+contacts:
+- purpose: report a fraud or scam / insurance identity fraud
+  email: fraudresponseteam@hcf.com.au
+  phone: '13 13 34'
+  note: >-
+    Consumer fraud channel. This is NOT a coordinated vulnerability-disclosure
+    address and HCF publishes no disclosure policy, bug bounty or safe-harbour
+    statement.
+external_references:
+- https://www.cyber.gov.au/
+- https://www.scamwatch.gov.au/
+vulnerability_disclosure:
+  program: false
+  security_txt: false
+  bug_bounty: false
+  note: >-
+    Probed 2026-07-25: no /.well-known/security.txt on any HCF host, no
+    /security, /responsible-disclosure or /vulnerability-disclosure page, and no
+    HackerOne / Bugcrowd / Intigriti listing. No `Security` pointer is emitted,
+    because there is no disclosure program to point at.
+evidence:
+- source: https://www.hcf.com.au/about-hcf/privacy-information-trust-centre
+  status: 200
+  fetched: '2026-07-25'
+- source: https://www.hcf.com.au/about-us/about-HCF/information-security
+  status: 200
+  fetched: '2026-07-25'
