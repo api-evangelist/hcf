@@ -1,0 +1,285 @@
+aid: hcf
+name: HCF
+review:
+  question: Does HCF publish a public, self-serve developer API surface for its Australian
+    private health, life and general insurance products?
+  answer: false
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  homeMarket: Australia
+  tier: carrier-life-health
+  posture: partner-gated
+findings:
+  summary: |
+    HCF — The Hospitals Contribution Fund of Australia Limited (ABN 68 000 026 746,
+    AFSL 241 414), Australia's largest not-for-profit health fund with over 2 million
+    members — publishes no public developer portal, no API reference, and no
+    machine-readable API description of any kind. Every conventional developer entry
+    point was probed on 2026-07-25 and every one either failed DNS resolution or
+    returned 404. The only public HTTP surface returning structured data is an
+    incidentally-exposed Adobe Experience Manager content-services endpoint that backs
+    the marketing website; it is undocumented, carries no insurance semantics, and is
+    not treated here as an API product. The company's real integration seams are all
+    third-party or login-gated: point-of-service extras claiming over HICAPS and
+    CommBank Smart Health terminals, Medicare Benefit Statements for medical gap
+    claims, and member self-service behind an Okta identity provider. This record is
+    an honest stub, and that is the correct outcome for this company.
+  developerPortal:
+    exists: false
+    url: ''
+    confirmed: false
+    classification: none — no developer portal of any kind (not even a login wall or
+      an innovation marketing page)
+    note: |
+      The apex domain hcf.com.au does not answer directly (curl returns 000); www.hcf.com.au
+      is the canonical host and returns 200. api.hcf.com.au resolves but 301s to
+      https://corporate.hcf.com.au/api, which is not a developer portal — see
+      incidentalSurfaces below.
+  probes:
+  - url: https://hcf.com.au
+    status: '000'
+    note: apex does not answer; www is canonical
+  - url: https://www.hcf.com.au
+    status: '200'
+    note: canonical marketing site (Adobe Experience Manager)
+  - url: https://developer.hcf.com.au
+    status: '000'
+    note: DNS does not resolve
+  - url: https://developers.hcf.com.au
+    status: '000'
+    note: DNS does not resolve
+  - url: https://docs.hcf.com.au
+    status: '000'
+    note: DNS does not resolve
+  - url: https://api.hcf.com.au
+    status: '200'
+    note: 301 redirect to https://corporate.hcf.com.au/api — AEM content services, not
+      a developer API
+  - url: https://www.hcf.com.au/developers
+    status: '404'
+  - url: https://www.hcf.com.au/developer
+    status: '404'
+  - url: https://www.hcf.com.au/developer-portal
+    status: '404'
+  - url: https://www.hcf.com.au/apis
+    status: '404'
+  - url: https://www.hcf.com.au/docs
+    status: '404'
+  - url: https://www.hcf.com.au/partners
+    status: '404'
+  - url: https://www.hcf.com.au/integrations
+    status: '404'
+  - url: https://www.hcf.com.au/open-data
+    status: '404'
+  - url: https://www.hcf.com.au/innovation
+    status: '404'
+  - url: https://corporate.hcf.com.au/openapi.json
+    status: '404'
+  - url: https://corporate.hcf.com.au/api/openapi.json
+    status: '404'
+  - url: https://corporate.hcf.com.au/swagger.json
+    status: '404'
+  - url: https://corporate.hcf.com.au/api-docs
+    status: '404'
+    note: returns the site 404 HTML page, not a spec index
+  - url: https://corporate.hcf.com.au/graphql
+    status: '404'
+  - url: https://www.hcf.com.au/.well-known/openid-configuration
+    status: '404'
+  - url: https://www.hcf.com.au/.well-known/oauth-authorization-server
+    status: '404'
+  - url: https://www.hcf.com.au/.well-known/security.txt
+    status: '404'
+  - url: https://provider.hcf.com.au
+    status: '000'
+    note: DNS does not resolve
+  - url: https://providers.hcf.com.au
+    status: '000'
+    note: DNS does not resolve
+  - url: https://portal.hcf.com.au
+    status: '000'
+    note: DNS does not resolve
+  - url: https://my.hcf.com.au
+    status: '000'
+    note: DNS does not resolve
+  - url: https://id.hcf.com.au/.well-known/openid-configuration
+    status: '200'
+    note: Okta org authorization server metadata — identity infrastructure, not a
+      product API
+  - url: https://id.hcf.com.au/.well-known/oauth-authorization-server
+    status: '200'
+    note: same Okta org metadata
+  openapi:
+    harvested: false
+    specsCount: 0
+    note: |
+      No OpenAPI, Swagger, RAML, AsyncAPI or Postman artifact was found anywhere on
+      any HCF-controlled host. Every /openapi.json, /openapi.yaml, /swagger.json,
+      /api-docs and /spec candidate returned 404. No openapi/ directory was created
+      because nothing real exists to save.
+  acord:
+    posture: no ACORD reference found
+    searched:
+    - ACORD
+    - AL3
+    - ACORD XML
+    - ACORD certified
+    - NGDS
+    - IVANS
+    note: |
+      Zero occurrences of ACORD, AL3, ACORD XML or NGDS on www.hcf.com.au. This is the
+      expected and structurally correct result: ACORD standards govern property &
+      casualty and life/annuity data exchange, while Australian private health
+      insurance runs on an entirely separate national rail set — HICAPS/Medicare
+      Easyclaim for point-of-service extras claiming, ECLIPSE-style hospital claiming
+      through Services Australia, and PHDB/APRA statutory reporting. ACORD posture is
+      therefore not merely absent, it is not the relevant standard for this carrier's
+      home market and line of business.
+  insuranceVerbs:
+    quote:
+      exposed: false
+      channel: consumer web funnel only (https://www.hcf.com.au/insurance/health/get-a-quote/customise-cover
+        and /health-insurance/overseas-visitors/get-a-quote) — HTML forms, no documented
+        API
+    bind:
+      exposed: false
+      channel: consumer web join flow; /healthinsurance/join/ is explicitly disallowed
+        in robots.txt
+    issue:
+      exposed: false
+      channel: internal policy administration; nothing published
+    fnol:
+      exposed: false
+      channel: |
+        Claims are lodged three ways, none of them an HCF API: on the spot at extras
+        providers using HICAPS VX, HICAPS Trinity or CommBank Smart Health payment
+        terminals (third-party rails HCF consumes rather than publishes); by uploading
+        to the My Membership app or online member services behind member login; or in
+        branch. Medical gap claims require a Medicare Benefit Statement obtained from
+        Medicare first, then submitted to HCF.
+    audience: consumer and member facing only; no agent, broker or partner API surface
+      is published
+  auth:
+    model: OAuth2 / OIDC authorization-code via Okta, for member sign-in only
+    issuer: https://id.hcf.com.au
+    authorizationEndpoint: https://id.hcf.com.au/oauth2/v1/authorize
+    tokenEndpoint: https://id.hcf.com.au/oauth2/v1/token
+    widget: Okta Sign-In Widget 6.8.1 (okta-signin-widget, OIE) served on https://www.hcf.com.au/member-login
+    developerCredentials: none — there is no API key issuance, no client registration
+      for third parties, and no published scope catalog for any HCF business API
+    note: |
+      The scopes advertised at id.hcf.com.au are stock Okta org-management scopes
+      (okta.users.read, okta.apps.manage, openid, profile, email, groups, offline_access
+      and similar) plus standard OIDC scopes. They describe the Okta tenant itself, not
+      an HCF insurance API, and must not be read as an HCF product scope catalog.
+  webhooks:
+    exists: false
+    note: No event catalog, webhook documentation or AsyncAPI description was found.
+      Absence is the finding.
+  postman:
+    exists: false
+    note: No public Postman collection or workspace found for HCF.
+  graphql:
+    exists: false
+    note: https://corporate.hcf.com.au/graphql returns 404. No SDL harvested.
+  grpc:
+    exists: false
+    note: No published .proto files.
+  incidentalSurfaces:
+  - url: https://corporate.hcf.com.au/api
+    status: '200'
+    contentType: application/vnd.siren+json;charset=utf-8
+    what: |
+      Adobe Experience Manager content-services endpoint exposing Siren hypermedia
+      (class core/services, with assets/screens/screens-dcc/content link relations).
+      Walking /api/content.json returns AEM authoring tree nodes — mobileapps,
+      campaigns, forms, screens, experience-fragments, hcf-admin — and one node whose
+      dc:description reads "Adobe Managed Services - Regent cluster availability
+      monitor". This is CMS plumbing for the marketing site, is entirely undocumented,
+      carries no insurance semantics whatsoever, and is deliberately NOT listed as an
+      API in apis.yml. It is recorded here only because it is a real 200 and an honest
+      reviewer should say what it is rather than dress it up as a developer surface.
+  marketContext: |
+    Australia has the legal machinery for open insurance and no live obligation. APRA
+    supervises prudentially; the Consumer Data Right that opened banking and energy was
+    designated to extend to general insurance and then deferred and de-prioritised, so
+    the CDR seam that made Australian banking legible stops short of insurance
+    entirely. Private health insurance — Medibank, nib, HCF — is a separately regulated
+    market with its own data flows and was never in scope for CDR. With no forcing
+    function, HCF has no external pressure to publish an API, and it has not.
+  transports:
+  - protocol: REST
+    scheme: https
+    documented: false
+    note: No documented REST API. The only structured-JSON response observed is the
+      undocumented AEM Siren content endpoint.
+  - protocol: GraphQL
+    documented: false
+  - protocol: gRPC
+    documented: false
+  - protocol: WebSocket
+    documented: false
+  - protocol: Webhooks
+    documented: false
+sources:
+- url: https://www.hcf.com.au/
+  type: Website
+  status: '200'
+  fetched: '2026-07-25'
+  note: Canonical marketing site. Keyword scan returned 0 hits for ACORD, AL3, NGDS,
+    IVANS, developer, API, OpenAPI, Swagger, Consumer Data Right; 3 hits for HICAPS.
+- url: https://www.hcf.com.au/about-us
+  type: About
+  status: '200'
+  fetched: '2026-07-25'
+  note: Source for legal name, 1932 founding, ABN 68 000 026 746, AFSL 241 414, "Australia's
+    largest not-for-profit health fund", over 2 million members, and the product line
+    list.
+- url: https://www.hcf.com.au/insurance/health/how-to-make-a-claim
+  type: Documentation
+  status: '200'
+  fetched: '2026-07-25'
+  note: Source for the claims rails — HICAPS VX / HICAPS Trinity / CommBank Smart Health
+    terminals, My Membership app, online member services, branch, and the Medicare Benefit
+    Statement step for medical gap claims.
+- url: https://www.hcf.com.au/about-hcf/partnerships
+  type: Documentation
+  status: '200'
+  fetched: '2026-07-25'
+  note: Partnerships are charitable, sporting and research (Royal Flying Doctor Service,
+    The Smith Family, Netball Australia, Victor Chang Cardiac Research Institute, ICHOM).
+    No technology, API, data-sharing or system-integration partners are named.
+- url: https://www.hcf.com.au/member-login
+  type: Login
+  status: '200'
+  fetched: '2026-07-25'
+  note: Okta Sign-In Widget 6.8.1; oktaBaseURL = https://id.hcf.com.au.
+- url: https://id.hcf.com.au/.well-known/openid-configuration
+  type: OpenIDConfiguration
+  status: '200'
+  fetched: '2026-07-25'
+  note: Okta org authorization server metadata. Identity infrastructure for member
+    sign-in, not an insurance API.
+- url: https://corporate.hcf.com.au/api
+  type: Undocumented
+  status: '200'
+  fetched: '2026-07-25'
+  note: AEM Siren content-services endpoint. See incidentalSurfaces.
+- url: https://www.hcf.com.au/robots.txt
+  type: Robots
+  status: '200'
+  fetched: '2026-07-25'
+  note: Disallows /secured/, /healthinsurance/secured/, /healthinsurance/join/, /mobileapps/,
+    /HCFMemSec/ and /hcf/memberPortal/ — confirming the member and join surfaces are
+    gated web applications, not APIs.
+actions:
+  apisYmlUpdated: true
+  apisListed: 0
+  openapiDirectoryCreated: false
+  reason: |
+    No public, documented, self-serve API exists for HCF, so apis[] is intentionally
+    empty and no openapi/ directory was created. Recording the absence accurately is
+    the deliverable. Re-review is warranted only if the Consumer Data Right is
+    reactivated for insurance, if HCF launches a partner or provider developer program,
+    or if a health-data interoperability mandate reaches Australian private health
+    insurers.

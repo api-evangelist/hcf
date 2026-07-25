@@ -1,0 +1,71 @@
+aid: hcf
+url: https://raw.githubusercontent.com/api-evangelist/hcf/refs/heads/main/apis.yml
+name: HCF
+kind: company
+description: >-
+  HCF — The Hospitals Contribution Fund of Australia Limited (ABN 68 000 026 746,
+  AFSL 241 414), founded in 1932 and headquartered in Sydney — is Australia's
+  largest not-for-profit health fund, covering over 2 million members. It
+  underwrites private health insurance (hospital, extras and ambulance cover) and
+  Overseas Visitors Health Cover, and distributes life and Recover Cover products
+  (life protect, income protect, critical illness), travel, pet, home, car and
+  landlord insurance, plus the Flip accidental-injury brand, alongside its own HCF
+  dental and eyecare centres and the HCF Research Foundation. As a carrier in
+  Australian private health insurance, HCF publishes NO public, self-serve
+  developer API and no developer portal: probes of developer.hcf.com.au,
+  developers.hcf.com.au and docs.hcf.com.au do not resolve, and /developers,
+  /developer, /api-docs, /partners and /integrations on www.hcf.com.au all return
+  404. Member and provider integration runs through channels HCF does not itself
+  expose as an API — point-of-service extras claiming over third-party HICAPS VX,
+  HICAPS Trinity and CommBank Smart Health terminals, Medicare Benefit Statements
+  for medical gap claims, and the My Membership app and online member services
+  behind an Okta-backed sign-in at id.hcf.com.au. No ACORD reference of any kind
+  appears on the site, which is consistent with private health insurance sitting
+  outside the general-insurance ACORD/AL3 world, and Australia's Consumer Data
+  Right — designated for general insurance and then deferred — never reached
+  health insurance at all. The record here is deliberately an honest stub: this is
+  a partner-gated, no-public-API carrier.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Insurance
+- Australia
+- Health Insurance
+- Life Insurance
+- Travel Insurance
+- Pet Insurance
+- Carrier
+- Not-for-Profit
+- Claims
+- Member Services
+- Partner Gated
+- No Public API
+created: '2026-07-25'
+modified: '2026-07-25'
+specificationVersion: '0.19'
+apis: []
+common:
+- type: Website
+  url: https://www.hcf.com.au/
+- type: About
+  url: https://www.hcf.com.au/about-us
+- type: ContactUs
+  url: https://www.hcf.com.au/contact-us
+- type: PrivacyPolicy
+  url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+- type: TermsOfService
+  url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/terms-and-conditions
+- type: TrustCenter
+  url: https://www.hcf.com.au/about-hcf/privacy-information-trust-centre
+- type: Blog
+  url: https://www.hcf.com.au/health-agenda
+- type: PressRoom
+  url: https://www.hcf.com.au/about-us/media-centre
+- type: AnnualReport
+  url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/annual-report
+- type: Login
+  url: https://www.hcf.com.au/member-login
+- type: OpenIDConfiguration
+  url: https://id.hcf.com.au/.well-known/openid-configuration
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
