@@ -1,0 +1,11 @@
+[
+  {
+    "repo": "hcf",
+    "captured_at": "2026-10-11T185545",
+    "source_url": "https://www.hcf.com.au/",
+    "source_type": "Website",
+    "file": "hcf-2026-10-11T185545.png",
+    "bytes": 685679,
+    "capture": "playwright-local"
+  }
+]
