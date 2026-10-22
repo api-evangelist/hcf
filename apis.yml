@@ -1,7 +1,11 @@
 aid: hcf
+
 url: https://raw.githubusercontent.com/api-evangelist/hcf/refs/heads/main/apis.yml
+
 name: HCF
+
 kind: company
+
 description: >-
   HCF — The Hospitals Contribution Fund of Australia Limited (ABN 68 000 026 746,
   AFSL 241 414), founded in 1932 and headquartered in Sydney — is Australia's
@@ -30,6 +34,7 @@ description: >-
   Right — designated for general insurance and then deferred — never reached
   health insurance at all. The record here is deliberately an honest stub: this is
   a partner-gated, no-public-API carrier.
+
 deliveryModel:
   model: saas
   open_source: false
@@ -41,6 +46,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -58,7 +64,9 @@ accessModel:
   - security
   generated: '2026-09-02'
   method: derived
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+
+image: https://www.hcf.com.au/content/dam/hcf/images/placeholder/logo_hcf1.png
+
 tags:
 - Insurance
 - Australia
@@ -70,11 +78,22 @@ tags:
 - Not-for-Profit
 - Claims
 - Member Services
+
 created: '2026-07-25'
-modified: '2026-07-25'
+
+modified: '2026-10-21'
+
 specificationVersion: '0.23'
-apis: []
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+
 common:
+- type: Hosts
+  url: hosts/hcf-hosts.yml
+- type: Vendors
+  url: vendors/hcf-vendors.yml
 - type: WellKnown
   name: /.well-known discovery probe matrix
   url: well-known/hcf-well-known.yml
@@ -150,9 +169,33 @@ common:
   url: https://www.hcf.com.au/member-login
 - type: OpenIDConfiguration
   url: https://id.hcf.com.au/.well-known/openid-configuration
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+
+apis: []
+
 x-tags-removed:
 - No Public API
 - Partner Gated
+
+x-coverage:
+  state: covered
+  reason: identity-verified
+  detail: Website www.hcf.com.au verified 200 (title "HCF health insurance | Your health comes first | HCF"); all 24 web pointers re-fetched 2026-10-21 with a browser UA, 23 returned 200 and facebook.com returned 400 (platform bot policy, kept). Logo taken from the homepage img src. No developer portal, docs or API reference is published.
+  evidence:
+  - url: https://www.hcf.com.au/
+    status: 200
+  - url: https://www.hcf.com.au/content/dam/hcf/images/placeholder/logo_hcf1.png
+    status: 200
+  - url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+    status: 200
+  - url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/terms-and-conditions
+    status: 200
+  - url: https://www.hcf.com.au/member-login
+    status: 200
+  - url: https://www.facebook.com/hcfaustralia/
+    status: 400
+x-enrichment:
+  date: '2026-10-21'
+  status: enriched
+  artifacts_added: 9
+  pass: modular-v1
+  engine: identity=anthropic,contract=anthropic,surfaces=anthropic,docs=anthropic,regulatory=anthropic

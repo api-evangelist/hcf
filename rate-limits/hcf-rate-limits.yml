@@ -1,0 +1,10 @@
+name: HCF rate limits
+generated: '2026-10-21'
+method: none
+limit_count: 0
+note: >-
+  No rate limits are documented: HCF publishes no developer API or documentation
+  (preflight 2026-10-21 found no docs host or contract on www.hcf.com.au,
+  id.hcf.com.au, corporate.hcf.com.au or api.hcf.com.au). The Okta tenant at
+  id.hcf.com.au is member sign-in only.
+limits: []

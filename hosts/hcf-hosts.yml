@@ -1,0 +1,130 @@
+generated: '2026-10-21'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 9
+  own: 5
+  other_domain: 1
+  platform: 3
+  roles:
+  - api
+  - other
+  - website
+hosts:
+- host: api.com.au
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: api.com.au
+  role: api
+  relation: other-domain
+- host: api.hcf.com.au
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: hcf.com.au
+  role: api
+  relation: own
+- host: au.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: corporate.hcf.com.au
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: hcf.com.au
+  role: other
+  relation: own
+- host: hcf.com.au
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: hcf.com.au
+  role: other
+  relation: own
+- host: id.hcf.com.au
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - OpenIDConfiguration
+  serves:
+  - identity
+  vendor: okta
+  registrable_domain: hcf.com.au
+  role: other
+  relation: own
+- host: www.facebook.com
+  found_by:
+  - pointer
+  types:
+  - Facebook
+  serves: []
+  registrable_domain: facebook.com
+  role: other
+  relation: platform
+- host: www.hcf.com.au
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Website
+  - About
+  - ContactUs
+  - Support
+  - HelpCenter
+  - CustomerService
+  - Feedback
+  - ProviderPortal
+  - InformationSecurity
+  - CodeOfConduct
+  - Sustainability
+  - Careers
+  - Forms
+  - PrivacyPolicy
+  - TermsOfService
+  - TrustCenter
+  - Blog
+  - PressRoom
+  - AnnualReport
+  - Login
+  serves:
+  - cdn
+  vendor: akamai
+  registrable_domain: hcf.com.au
+  role: website
+  relation: own
+- host: www.youtube.com
+  found_by:
+  - pointer
+  types:
+  - YouTube
+  serves: []
+  registrable_domain: youtube.com
+  role: other
+  relation: platform

@@ -1,5 +1,8 @@
 generated: '2026-07-25'
 method: searched
+source:
+- https://www.hcf.com.au/about-hcf/privacy-information-trust-centre
+- https://www.hcf.com.au/about-us/about-HCF/information-security
 probe: true
 url: https://www.hcf.com.au/about-hcf/privacy-information-trust-centre
 title: Privacy information & trust centre

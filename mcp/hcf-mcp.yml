@@ -1,0 +1,28 @@
+name: HCF MCP Server
+type: MCPServer
+provider: hcf
+generated: '2026-10-21'
+method: none
+status: none
+description: >-
+  Checked, nothing there. HCF (The Hospitals Contribution Fund of Australia) publishes no
+  official MCP server, hosted or local, and no public OpenAPI contract from which a candidate
+  tool list could be derived, so no tools are recorded. A web search for an HCF MCP server
+  returned only generic healthcare-MCP articles, none naming HCF. The pre-flight probe saw
+  https://id.hcf.com.au/mcp answer 403 (control path 405). That host is HCF's Okta sign-in
+  tenant. The path is not documented or advertised by HCF anywhere, so it is recorded only as an
+  observed response and NOT as an MCP endpoint. Following the probe-safety rules, it was not
+  called further.
+deployment:
+  mode: none
+  auth: unknown
+  verified: searched
+source:
+  - https://www.hcf.com.au/
+  - 'web search 2026-10-21: HCF health fund Australia "MCP server" OR "model context protocol" (no HCF result)'
+observed:
+  - url: https://id.hcf.com.au/mcp
+    status: 403
+    control_status: 405
+    note: undocumented path on the Okta identity tenant; not treated as an MCP server
+tools: []

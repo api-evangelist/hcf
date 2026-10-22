@@ -1,0 +1,15 @@
+name: HCF pricing
+generated: '2026-10-21'
+method: none
+audience: consumer
+pricing_basis: none
+published: false
+plan_count: 0
+delivery:
+  model: unclear
+note: >-
+  HCF publishes no developer API and therefore no API plans or pricing. Its
+  published prices are retail private health insurance premiums for members
+  (a consumer fee schedule), which are not API pricing and are deliberately not
+  recorded here.
+plans: []

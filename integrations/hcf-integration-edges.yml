@@ -1,0 +1,22 @@
+generated: '2026-10-21'
+method: none
+source:
+- https://zapier.com/apps/hcf/integrations
+- https://n8n.io/integrations/hcf/
+- https://composio.dev/toolkits/hcf
+- https://monid.ai/tools/hcf
+checked:
+- https://zapier.com/apps/hcf/integrations
+- https://zapier.com/apps/hcf-health-insurance/integrations
+- https://www.hcf.com.au/partners
+- https://www.hcf.com.au/integrations
+- https://composio.dev/toolkits/hcf
+- https://monid.ai/tools/hcf
+- https://n8n.io/integrations/hcf/
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
+note: No API integrations found. HCF has no developer API, no integrations/partners page (/partners and /integrations
+  on www.hcf.com.au return 404 per the record) and no Zapier listing. Point-of-service claiming runs over third-party
+  HICAPS and CommBank Smart Health terminals, which HCF consumes rather than exposes as an API integration.

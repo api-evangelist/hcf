@@ -1,0 +1,13 @@
+generated: '2026-10-21'
+method: none
+note: >-
+  Checked, nothing found. HCF publishes no developer API and no SDK or CLI.
+  npm registry search for "hcf.com.au" returned 0 results (200); the PyPI
+  package "hcf" belongs to an unrelated individual author (not HCF); no GitHub
+  org "hcf" exists (404) and the only "hcf health" GitHub match (hcfab) is not
+  linked from hcf.com.au. No SDK, SourceCode or CLI pointer exists in apis.yml.
+checked:
+- https://registry.npmjs.org/-/v1/search?text=hcf.com.au&size=5
+- https://pypi.org/pypi/hcf/json
+- https://api.github.com/orgs/hcf
+packages: []

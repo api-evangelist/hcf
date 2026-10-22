@@ -1,0 +1,81 @@
+generated: '2026-10-21'
+method: searched
+probe: true
+source: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+pages_read:
+- url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+  http_status: 200
+- url: https://www.hcf.com.au/about-hcf/privacy-information-trust-centre
+  http_status: 200
+  note: Consumer-facing privacy & security page (fraud monitoring, MFA, 24/7 threat monitoring); names no certification, breach-notification commitment or other catalog signal.
+- url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/terms-and-conditions
+  http_status: 200
+  note: Website terms; no regulatory-posture signal found.
+frameworks_named: [Privacy Act 1988 (Cth), Australian Privacy Principles, Spam Act 2003 (Cth), Do Not Call Register Act 2006 (Cth), GDPR (2016/679) for EU OVHC members]
+signals:
+  data_subject_request:
+    url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+    section: HOW TO ACCESS OR OTHERWISE CORRECT YOUR PERSONAL INFORMATION / OVERSEAS VISITOR HEALTH COVER (OVHC) MEMBER
+    channel: service@myhcf.com.au, HCF branches, 13 13 34, privacyofficer@hcf.com.au
+    rights_named: [access, correction, erasure (OVHC), restriction (OVHC), objection (OVHC), portability (OVHC), withdrawal of consent (OVHC)]
+    evidence:
+    - source: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "We will generally give access unless an exemption applies to certain information as permitted by the Australian Privacy Principles under the Privacy Act."
+    - source: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "If you are an OVHC member you also have, in certain circumstances, the right to request that the personal information we hold about you is erased, its further processing is restricted or to object to its processing. In certain circumstances, you also have the right to data portability, meaning you can receive personal information you have provided to us in a structured, commonly used and machine-readable format and/or have it transmitted to another party."
+    note: >-
+      Access and correction are offered to all members under the Australian Privacy Principles; erasure,
+      restriction, objection and portability are stated only for Overseas Visitor Health Cover members (GDPR scope).
+      The pre-flight flagged the portability sentence as exit_assistance; it is a data-subject right, not a
+      service-exit commitment, so it is recorded here. No response SLA is stated.
+  data_retention:
+    url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+    section: STORAGE AND SECURITY OF YOUR PERSONAL INFORMATION
+    evidence:
+    - source: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "In the case of clinical information collected by our HCF operated health service providers, such as our Dental Centres and Eyecare Centres, your information will be held for at least seven years from the last time a health service was provided, in accordance with Health Records legislation."
+    - source: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "We will keep member personal information for as long as we maintain our relationship with you or otherwise as required for our business operations or by applicable laws, including to enforce our rights, for fraud prevention, to identify, issue or resolve legal claims and/or for proper record keeping purposes."
+    note: >-
+      A concrete minimum retention period for clinical records (7 years; until age 25 for patients under 18),
+      and an open-ended, purpose-based retention rule for member data, with a stated intent to destroy or
+      de-identify data no longer needed.
+  data_residency:
+    url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+    section: OVERSEAS DISCLOSURES
+    countries_named: [USA, Canada, New Zealand, Singapore, United Kingdom, EEA, Switzerland, Japan, India, Philippines, El Salvador]
+    evidence:
+    - source: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "Some organisations to which we disclose personal information are located in the USA, Canada, New Zealand, Singapore, United Kingdom, European Economic Area (EEA), Switzerland, Japan, India, Philippines, and El Salvador (in relation to HCF Gift cards issued through Blackhawk Group only)."
+    - source: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "If you are an OVHC member in the European Economic Area (EEA) we may use service providers based outside the EEA."
+    note: >-
+      A cross-border disclosure statement naming destination countries, not a data-residency commitment: no
+      in-region storage option is offered. Transfers out of the EEA are said to rely on mechanisms such as
+      European Commission standard contractual clauses.
+  subprocessors:
+    url: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+    section: DO WE DISCLOSE INFORMATION TO THIRD PARTIES?
+    published_list: false
+    named: [Stripe (payments), Blackhawk Group (gift cards)]
+    evidence:
+    - source: https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "Any third parties to whom we disclose or permit access to your personal information without obtaining your (or an authorised person's) written consent, in the course of providing services on our behalf, will be subject to strict contractual restrictions to ensure that they protect personal information and keep it confidential, consistent with relevant privacy and data protection laws."
+    note: >-
+      The policy names categories of service providers (claims processing, app developers, IT and payment
+      providers) and a few named vendors (Stripe, Blackhawk Group, plus advertising and analytics vendors), and
+      binds them contractually. It does not publish a subprocessor list or a change-notification process.
