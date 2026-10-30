@@ -1,4 +1,4 @@
-# HCF (hcf)
+# HCF
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,79 +64,104 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-HCF — The Hospitals Contribution Fund of Australia Limited (ABN 68 000 026 746, AFSL 241 414), founded in 1932 and headquartered in Sydney — is Australia's largest not-for-profit health fund, covering over 2 million members. It underwrites private health insurance (hospital, extras and ambulance cover) and Overseas Visitors Health Cover, and distributes life and Recover Cover products (life protect, income protect, critical illness), travel, pet, home, car and landlord insurance, plus the Flip accidental-injury brand, alongside its own HCF dental and eyecare centres and the HCF Research Foundation.
+HCF — The Hospitals Contribution Fund of Australia Limited (ABN 68 000 026 746, AFSL 241 414), founded in 1932 and headquartered in Sydney — is Australia's largest not-for-profit health fund, covering over 2 million members. It underwrites private health insurance (hospital, extras and ambulance cover) and Overseas Visitors Health Cover, and distributes life and Recover Cover products (life protect, income protect, critical illness), travel, pet, home, car and landlord insurance, plus the Flip accidental-injury brand, alongside its own HCF dental and eyecare centres and the HCF Research Foundation. As a carrier in Australian private health insurance, HCF publishes NO public, self-serve developer API and no developer portal: probes of developer.hcf.com.au, developers.hcf.com.au and docs.hcf.com.au do not resolve, and /developers, /developer, /api-docs, /partners and /integrations on www.hcf.com.au all return 404. Member and provider integration runs through channels HCF does not itself expose as an API — point-of-service extras claiming over third-party HICAPS VX, HICAPS Trinity and CommBank Smart Health terminals, Medicare Benefit Statements for medical gap claims, the My Membership app and online member services behind an Okta-backed sign-in at id.hcf.com.au, and four login-gated ASP.NET provider portals (hospital, medical, dental and ancillary) at www.hcf.com.au/provider-portals which are web applications rather than machine interfaces. The only machine-readable surface HCF answers on is that Okta tenant's OIDC and RFC 8414 discovery metadata, captured in this record. No ACORD reference of any kind appears on the site, which is consistent with private health insurance sitting outside the general-insurance ACORD/AL3 world, and Australia's Consumer Data Right — designated for general insurance and then deferred — never reached health insurance at all. The record here is deliberately an honest stub: this is a partner-gated, no-public-API carrier.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/hcf/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/hcf/refs/heads/main/apis.yml)
+**Areas:** Insurance · Australia · Health Insurance · Life Insurance · Travel Insurance · Pet Insurance · Carrier · Not-for-Profit · Claims · Member Services
 
-## Tags
+## HCF on APIs.io
 
-- Insurance
-- Australia
-- Health Insurance
-- Life Insurance
-- Travel Insurance
-- Pet Insurance
-- Carrier
-- Not-for-Profit
-- Claims
-- Member Services
-- Partner Gated
-- No Public API
+Everything profiled for HCF is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/hcf/](https://apis.io/providers/hcf/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-07-25
-- **Modified:** 2026-07-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Security (3)
 
-**None.** HCF publishes no public, self-serve API and no developer portal, and this profile records that honestly rather than inventing a surface to fill the record.
+Authentication, trust centre, and vulnerability disclosure.
 
-As of the 2026-07-25 review:
+- [Hcf Authentication](https://apis.io/security/hcf/hcf-authentication/)
+- [Hcf Domain Security](https://apis.io/security/hcf/hcf-domain-security/)
+- [Hcf Trust Center](https://apis.io/security/hcf/hcf-trust-center/)
 
-- `developer.hcf.com.au`, `developers.hcf.com.au` and `docs.hcf.com.au` do not resolve.
-- `/developers`, `/developer`, `/developer-portal`, `/apis`, `/docs`, `/partners`, `/integrations`, `/open-data` and `/innovation` on `www.hcf.com.au` all return **404**.
-- `api.hcf.com.au` resolves but redirects to `https://corporate.hcf.com.au/api`, which is an incidentally-exposed Adobe Experience Manager content-services endpoint serving Siren hypermedia for the marketing site. It is undocumented, has no insurance semantics, and is not counted as an API.
-- No OpenAPI, Swagger, AsyncAPI, GraphQL SDL, `.proto` or public Postman collection exists on any HCF-controlled host. Every spec candidate returned 404.
+#### OAuth scopes (1)
 
-### ACORD posture
+The permissions the API asks for.
 
-**No ACORD reference found.** Scans of `www.hcf.com.au` returned zero hits for ACORD, AL3, ACORD XML, NGDS or IVANS. This is structurally expected: ACORD standards govern property & casualty and life/annuity exchange, whereas Australian private health insurance runs on a separate national rail set.
+- [Hcf Scopes](https://apis.io/scopes/hcf/hcf-scopes/)
 
-### The real integration seams
+#### Plans and pricing (1)
 
-HCF consumes integration rails rather than publishing them:
+Published plans, tiers and prices.
 
-- **Point-of-service claiming** at extras providers over third-party HICAPS VX, HICAPS Trinity and CommBank Smart Health payment terminals.
-- **Medical gap claims** requiring a Medicare Benefit Statement obtained from Medicare before submission to HCF.
-- **Member self-service** through the My Membership app and online member services, behind an Okta-backed sign-in.
+- [Hcf Plans Pricing](https://apis.io/plans/hcf/hcf-plans-pricing/)
 
-### Quote / bind / issue / FNOL
+#### Rate limits (1)
 
-None of the four insurance verbs are exposed as an API. Quote and join are consumer HTML funnels; `/healthinsurance/join/` is explicitly disallowed in `robots.txt`. Claims (FNOL) go through the terminals, the app, or a branch.
+Published request limits.
 
-### Auth model
+- [Hcf Rate Limits](https://apis.io/rate-limits/hcf/hcf-rate-limits/)
 
-OAuth2 / OIDC authorization-code via **Okta** at `https://id.hcf.com.au` (Okta Sign-In Widget 6.8.1), for **member sign-in only**. The OIDC discovery document is publicly readable and advertises stock Okta org-management and standard OIDC scopes — it describes the identity tenant, not an HCF product API. There is no third-party client registration, no API key issuance, and no published scope catalog for any HCF business API.
+## Where to find this API
 
-### Market context
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-Australia has the legal machinery for open insurance and no live obligation. APRA supervises prudentially, and the Consumer Data Right that opened banking and energy was designated to extend to general insurance and then deferred and de-prioritised — so the CDR seam that made Australian banking legible stops before insurance. Private health insurance is a separately regulated market with its own data flows and was never in CDR scope. With no forcing function, HCF has no external pressure to publish an API, and it has not.
+- [Website](https://www.hcf.com.au/)
+- [Support](https://www.hcf.com.au/about-hcf/help-hub)
+- [Blog](https://www.hcf.com.au/health-agenda)
+- [Trust centre](https://www.hcf.com.au/about-hcf/privacy-information-trust-centre)
+- [Terms of service](https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/terms-and-conditions)
+- [Privacy policy](https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy)
 
-## Links
+## API Evangelist rating
 
-- **Website:** [https://www.hcf.com.au/](https://www.hcf.com.au/)
-- **About:** [https://www.hcf.com.au/about-us](https://www.hcf.com.au/about-us)
-- **Contact:** [https://www.hcf.com.au/contact-us](https://www.hcf.com.au/contact-us)
-- **Privacy Policy:** [https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy](https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/privacy-policy)
-- **Terms and Conditions:** [https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/terms-and-conditions](https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/policies/terms-and-conditions)
-- **Trust Centre:** [https://www.hcf.com.au/about-hcf/privacy-information-trust-centre](https://www.hcf.com.au/about-hcf/privacy-information-trust-centre)
-- **Blog (Health Agenda):** [https://www.hcf.com.au/health-agenda](https://www.hcf.com.au/health-agenda)
-- **Media Centre:** [https://www.hcf.com.au/about-us/media-centre](https://www.hcf.com.au/about-us/media-centre)
-- **Annual Report:** [https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/annual-report](https://www.hcf.com.au/about-us/about-HCF/governance-and-structure/annual-report)
-- **Member Login:** [https://www.hcf.com.au/member-login](https://www.hcf.com.au/member-login)
-- **OpenID Configuration:** [https://id.hcf.com.au/.well-known/openid-configuration](https://id.hcf.com.au/.well-known/openid-configuration)
+**Kin Score 22.3** — emerging · rubric 0.24.0 · scored 2026-10-21
 
-## Review
+| Facet | Score |
+|---|---|
+| Discoverability | 55.4 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 35.5 |
 
-See [review.yml](review.yml) for the full 2026-07-25 API Evangelist review, including every probed URL with its HTTP status.
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+
+**Regulatory alignment 41.2** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/hcf/](https://apis.io/providers/hcf/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for HCF: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/hcf/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
